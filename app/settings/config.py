@@ -1,0 +1,3 @@
+UVICORN_RELOAD = True
+API_NAME = "SmartContract"
+API_VERSION = "0.1"

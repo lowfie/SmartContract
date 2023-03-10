@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    image: smart_contract
+    hostname: smart_contract
+    container_name: SmartContract
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:14.5
+    restart: always
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: "${DATABASE_POSTGRES}"
+      POSTGRES_USER: "${USER_POSTGRES}"
+      POSTGRES_PASSWORD: "${PASSWORD_POSTGRES}"
+    ports:
+      - "${PORT_POSTGRES}:${PORT_POSTGRES}"
+    healthcheck:
+            test: ["CMD", "pg_isready", "-q", "-d", "${DATABASE_POSTGRES}", "-U", "${USER_POSTGRES}"]
+            timeout: 45s
+            interval: 10s
+            retries: 10
+    networks:
+      - "SmartContract-net"
+
+
+networks:
+  SmartContract-net:
+    driver: bridge
+    name: SmartContract-net
