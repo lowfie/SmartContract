@@ -11,6 +11,9 @@ class EthereumGoerliTestnet:
             abi=self._contract_abi
         )
 
+    def mint(self, owner_address: str, unique_hash: str, mediaURL: str):
+        pass
+
     def total_supply(self) -> int | None:
         try:
             result = self.contract_instance.functions.totalSupply().call()
