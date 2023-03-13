@@ -7,11 +7,11 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-fastapi = "^0.93.0"
-uvicorn = "^0.20.0"
 environs = "^9.5.0"
+web3 = "^5.31.4"
+fastapi = "^0.94.0"
+uvicorn = "^0.21.0"
 tortoise-orm = {extras = ["asyncpg"], version = "^0.19.3"}
-web3 = "^5.31.3"
 
 
 [build-system]
