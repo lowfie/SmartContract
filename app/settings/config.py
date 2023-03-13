@@ -5,6 +5,7 @@ env.read_env()
 
 # app settings
 UVICORN_RELOAD = True
+UVICORN_HOST = "0.0.0.0"
 API_NAME = "SmartContract"
 API_VERSION = "0.1"
 
