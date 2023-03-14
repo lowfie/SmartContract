@@ -51,3 +51,6 @@ CONTRACT_ABI=
 - postgresql
 - poetry
 - docker, docker-compose
+
+## Backlog:
+- добавить logging
