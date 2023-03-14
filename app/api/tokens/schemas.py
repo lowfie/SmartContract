@@ -16,4 +16,14 @@ class CreteTokenOut(BaseModel):
     owner: str
 
 
+class TokenList(BaseModel):
+    class TokenSchema(CreteTokenOut):
+        id: int
+    token_list: list[TokenSchema]
+
+
+class TotalSupplySchema(BaseModel):
+    totalSupply: int
+
+
 Token_Pydantic = pydantic_model_creator(Token, name="Token")
