@@ -1,4 +1,4 @@
-from fastapi import APIRouter, status
+from fastapi import APIRouter, status, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 
@@ -21,11 +21,17 @@ contract = EthereumGoerliTestnet(
 @tokens.post('/create/', response_model=CreteTokenOut)
 async def create_new_token(create_token: CreateTokenIn):
     unique_hash = generate_unique_hash()
-    tx_hash = contract.mint(
-        owner_address=create_token.owner,
-        unique_hash=unique_hash,
-        mediaURL=create_token.media_url
-    )
+    try:
+        tx_hash = contract.mint(
+            owner_address=create_token.owner,
+            unique_hash=unique_hash,
+            mediaURL=create_token.media_url
+        )
+    except ValueError:
+        raise HTTPException(
+            status_code=status.HTTP_405_METHOD_NOT_ALLOWED,
+            detail="INSUFFICIENT_FUNDS"
+        )
     token_result = CreteTokenOut(
         unique_hash=unique_hash,
         tx_hash=tx_hash,
