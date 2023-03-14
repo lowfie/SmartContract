@@ -19,6 +19,9 @@ DATABASE_POSTGRES = env.str("DATABASE_POSTGRES")
 # infura creds
 INFURA_PROVIDER = env.str("INFURA_PROVIDER")
 
+# metamask key
+METAMASK_PRIVATE_KEY = env.str("METAMASK_PRIVATE_KEY")
+
 # web3 configuration
 CONTRACT_ADDRESS = env.str("CONTRACT_ADDRESS")
 CONTRACT_ABI = env.json("CONTRACT_ABI")
