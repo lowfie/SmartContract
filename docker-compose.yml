@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    volumes:
+      - "./:/SmartContract"
     ports:
       - "8000:8000"
     image: smart_contract
