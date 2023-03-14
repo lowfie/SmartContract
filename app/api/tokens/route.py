@@ -33,14 +33,14 @@ async def create_new_token(create_token: CreateTokenIn):
             unique_hash=unique_hash,
             mediaURL=create_token.media_url
         )
-    except ValueError:
+    except ValueError as _ex:
         raise HTTPException(
             status_code=status.HTTP_405_METHOD_NOT_ALLOWED,
-            detail="INSUFFICIENT_FUNDS"
+            detail="TX_HASH_NOT_GENERATED"
         )
     token_result = CreteTokenOut(
         unique_hash=unique_hash,
-        tx_hash=tx_hash,
+        tx_hash=tx_hash.hex(),
         media_url=create_token.media_url,
         owner=create_token.owner
     )
