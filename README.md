@@ -44,6 +44,7 @@ CONTRACT_ABI=
 ```
 
 ## Стек технологий 
+- python3.10+ (я использовал 3.11.2)
 - fastapi+pydantic
 - web3py
 - tortoise-orm+pydantic
