@@ -4,24 +4,24 @@
 Суть разрабатываемого сервиса заключается в том, чтобы производить операции с NFT-токеном, используя REST API.
 Wелью задачи является интеграция с NFT токеном, и написание сервиса по взаимодействию с ним.
 
-# Запуск проекта 
+## Запуск проекта 
 1. git clone https://github.com/lowfie/SmartContract.git
 2. Создание `.env` файла (Ниже описан)
 
 Локально:
-*Для этого способа вы должны будете подключить базу данных введя данные в `.env`
+- *Для этого способа вы должны подключить базу данных вручную, введя данные в `.env`
 
-2. Установка зависимостей
+3. Установка зависимостей
 ```
 pip install --upgrade pip
 pip install git+https://github.com/ethereum/web3.py.git
 pip install -r requirements.txt
 ```
-3. Перейдите в корневую дирректорию и запустите проект `python main.py`
+4. Перейдите в корневую дирректорию и запустите проект `python main.py`
 
 Docker:
-2. docker compose build 
-3. docker compose up
+3. docker compose build 
+4. docker compose up
 
 
 ## .env файл
