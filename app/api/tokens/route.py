@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 
 from app.web3.contract.ethereum_goerli import EthereumGoerliTestnet
-from app.api.tokens.schemas import CreateTokenIn, CreteTokenOut
+from app.api.tokens.schemas import CreateTokenIn, CreteTokenOut, Token_Pydantic
 from app.api.tokens.utils import generate_unique_hash
 from app.database.models import Token
 from app.settings.config import CONTRACT_ABI, CONTRACT_ADDRESS, METAMASK_PRIVATE_KEY
@@ -47,7 +47,11 @@ async def create_new_token(create_token: CreateTokenIn):
 
 @tokens.get('/list/')
 async def list_token_objects():
-    pass
+    token_list = await Token_Pydantic.from_queryset(Token.all())
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content={"result": {"token_list": jsonable_encoder(token_list)}}
+    )
 
 
 @tokens.get('/total_supply/')
